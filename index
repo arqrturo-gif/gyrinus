@@ -1,1 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Gyrinus</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div id="hud">
+    <div id="tiempo">Tiempo: 3:00</div>
+    <div id="puntaje">Puntaje: 0</div>
+  </div>
+
+  <div id="escena">
+    <div id="blanca" class="caneca" data-categoria="reciclable">Blanca</div>
+    <div id="verde" class="caneca" data-categoria="organico">Verde</div>
+    <div id="negra" class="caneca" data-categoria="no-aprovechable">Negra</div>
+  </div>
+
+  <div id="objetos"></div>
+
+  <!-- Sonidos -->
+  <audio id="sndInicio" src="audio/inicio.mp3"></audio>
+  <audio id="sndAcierto" src="audio/acierto.mp3"></audio>
+  <audio id="sndError" src="audio/error.mp3"></audio>
+  <audio id="sndFin" src="audio/fin.mp3"></audio>
+
+  <script src="app.js"></script>
+</body>
+</html>
 
