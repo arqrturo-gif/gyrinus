@@ -11,7 +11,7 @@ html, body {
 
 body {
   background-image: url("img/fondo.png");
-  background-size: cover;
+  background-size: 80%;
   background-position: center;
   background-repeat: no-repeat;
   color: white;
@@ -72,3 +72,4 @@ body {
 #blanca { left: 20%; }
 #verde  { left: 45%; }
 #negra  { left: 70%; }
+
