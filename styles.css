@@ -1,110 +1,63 @@
-/* RESET GENERAL */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* CUERPO */
 body {
-  margin: 0;
-  background: #e9f5f1;
   text-align: center;
+  background-image: url("img/fondo.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-/* ENCABEZADO */
-header {
-  position: relative;            /* necesario para posicionar el reloj */
-  background: #0b6e4f;
+/* HUD */
+#hud {
+  padding: 15px;
   color: white;
-  padding: 15px 10px 25px 10px;
+  font-weight: bold;
 }
 
-/* TÍTULO */
-header h1 {
-  margin: 5px 0;
-  font-size: 2.2rem;
+#tiempo {
+  font-size: 3rem;
 }
 
-/* PUNTAJE */
 #puntaje {
   font-size: 1.2rem;
-  margin: 5px 0;
 }
 
-/* ⏱️ RELOJ (3x MÁS GRANDE) */
-#tiempo {
-  position: absolute;
-  left: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 3rem;          /* tamaño ajustado */
-  font-weight: 900;
-  line-height: 1;
-  color: #ffffff;
-  text-shadow:
-    0 0 10px rgba(0,0,0,0.6),
-    0 0 20px rgba(0,0,0,0.4);
+/* ESCENA */
+#escena {
+  position: relative;
+  height: 400px;
 }
 
-/* CONTENIDO PRINCIPAL */
-main {
-  padding: 20px;
-}
-
-/* ZONA DE OBJETOS */
+/* ZONA OBJETO */
 #objetos {
   height: 160px;
-  margin-bottom: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* OBJETO ARRASTRABLE */
 .objeto {
   width: 120px;
   cursor: grab;
 }
 
-.objeto:active {
-  cursor: grabbing;
-}
-
-/* CONTENEDOR DE CANECAS */
-#canecas {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-/* CANECA GENERAL */
+/* ZONAS ACTIVAS (boxes invisibles) */
 .caneca {
-  width: 140px;
+  position: absolute;
+  top: 220px;            /* MISMA COORDENADA Y */
+  width: 150px;
   height: 180px;
-  border-radius: 10px;
-  padding-top: 10px;
-  color: white;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  background: rgba(255,255,255,0.25);
+  border: 2px dashed rgba(255,255,255,0.5);
 }
 
-/* TEXTO DE CANECA */
-.caneca p {
-  margin: 0;
-  font-size: 1rem;
-}
-
-/* COLORES POR TIPO */
-.reciclable {
-  background: #1e90ff;
-}
-
-.organico {
-  background: #3cb371;
-}
-
-.no-aprovechable {
-  background: #696969;
-}
+/* POSICIÓN HORIZONTAL */
+#blanca { left: 20%; }
+#verde  { left: 45%; }
+#negra  { left: 70%; }
