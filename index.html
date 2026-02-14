@@ -2,30 +2,29 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Gyrinus</title>
+  <title>GYRINUS</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
+  <!-- HUD -->
   <div id="hud">
-    <div id="tiempo">Tiempo: 3:00</div>
+    <div id="tiempo">⏱ 03:00</div>
     <div id="puntaje">Puntaje: 0</div>
   </div>
 
+  <!-- ESCENA -->
   <div id="escena">
-    <div id="blanca" class="caneca" data-categoria="reciclable">Blanca</div>
-    <div id="verde" class="caneca" data-categoria="organico">Verde</div>
-    <div id="negra" class="caneca" data-categoria="no-aprovechable">Negra</div>
+
+    <!-- ZONA OBJETO -->
+    <div id="objetos"></div>
+
+    <!-- ZONAS ACTIVAS (boxes lógicas) -->
+    <div id="blanca" class="caneca" data-categoria="reciclable"></div>
+    <div id="verde"  class="caneca" data-categoria="organico"></div>
+    <div id="negra"  class="caneca" data-categoria="no-aprovechable"></div>
+
   </div>
 
-  <div id="objetos"></div>
-
-  <!-- Sonidos -->
-  <audio id="sndInicio" src="audio/inicio.mp3"></audio>
-  <audio id="sndAcierto" src="audio/acierto.mp3"></audio>
-  <audio id="sndError" src="audio/error.mp3"></audio>
-  <audio id="sndFin" src="audio/fin.mp3"></audio>
-
-  <script src="app.js"></script>
-</body>
-</html>
+  <!-- SONIDOS -->
+  <audio id="sndAcierto" src="
