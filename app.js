@@ -21,10 +21,6 @@ const canecas = document.querySelectorAll(".caneca");
 const puntajeEl = document.getElementById("puntaje");
 const tiempoEl = document.getElementById("tiempo");
 
-const sndAcierto = new Audio("audio/acierto.mp3");
-const sndError = new Audio("audio/error.mp3");
-const sndFin = new Audio("audio/fin.mp3");
-
 /* CREAR OBJETO */
 function crearObjeto(data) {
   const img = document.createElement("img");
@@ -40,7 +36,7 @@ function crearObjeto(data) {
   return img;
 }
 
-/* CARGAR OBJETO ALEATORIO */
+/* CARGAR OBJETO */
 function cargarObjeto() {
   contenedor.innerHTML = "";
   const random = Math.floor(Math.random() * objetosData.length);
@@ -48,7 +44,7 @@ function cargarObjeto() {
   contenedor.appendChild(objetoActual);
 }
 
-/* DROP LOGICO */
+/* DROP */
 canecas.forEach(caneca => {
 
   caneca.addEventListener("dragover", e => e.preventDefault());
@@ -62,11 +58,9 @@ canecas.forEach(caneca => {
 
     if (categoriaObjeto === categoriaCaneca) {
       puntaje += 8;
-      sndAcierto.play();
-      cargarObjeto();     // desaparece solo si acierta
+      cargarObjeto();
     } else {
       puntaje -= 8;
-      sndError.play();
     }
 
     puntajeEl.textContent = `Puntaje: ${puntaje}`;
@@ -87,7 +81,6 @@ function iniciarTiempo() {
     if (tiempoRestante <= 0) {
       clearInterval(intervalo);
       contenedor.innerHTML = "";
-      sndFin.play();
       alert(`Tiempo finalizado\nPuntaje: ${puntaje}`);
     }
 
