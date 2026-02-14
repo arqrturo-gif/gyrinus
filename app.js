@@ -1,33 +1,37 @@
 let puntaje = 0;
-let indiceActual = 0;
+let tiempoRestante = 180;
 let objetoActual = null;
-let tiempoRestante = 180; // 3 minutos
 
 const objetosData = [
-  { src: "img/serv.png", categoria: "no-aprovechable", alt: "servilleta" },
-  { src: "img/cp.png", categoria: "organico", alt: "cáscara" },
-  { src: "img/btlv.png", categoria: "reciclable", alt: "botella" },
-  { src: "img/jeringa.png", categoria: "no-aprovechable", alt: "jeringa" },
-  { src: "img/vaso.png", categoria: "reciclable", alt: "vaso" }
+  { src: "img/7up.jpg", categoria: "reciclable" },
+  { src: "img/btl.png", categoria: "reciclable" },
+  { src: "img/btlp.jpg", categoria: "reciclable" },
+  { src: "img/btlpet.jpg", categoria: "reciclable" },
+  { src: "img/btlv.jpg", categoria: "reciclable" },
+  { src: "img/cp.png", categoria: "organico" },
+  { src: "img/envbbm.jpg", categoria: "reciclable" },
+  { src: "img/envg.jpg", categoria: "reciclable" },
+  { src: "img/envgl.jpg", categoria: "reciclable" },
+  { src: "img/jeringa.png", categoria: "no-aprovechable" },
+  { src: "img/ph.png", categoria: "no-aprovechable" }
 ];
 
-const contenedorObjetos = document.getElementById("objetos");
+const contenedor = document.getElementById("objetos");
 const canecas = document.querySelectorAll(".caneca");
 const puntajeEl = document.getElementById("puntaje");
 const tiempoEl = document.getElementById("tiempo");
 
-/* ---- SONIDOS (opcionales) ---- */
-const sonidoOk = new Audio("audio/ok.mp3");
-const sonidoError = new Audio("audio/error.mp3");
+const sndAcierto = new Audio("audio/acierto.mp3");
+const sndError = new Audio("audio/error.mp3");
+const sndFin = new Audio("audio/fin.mp3");
 
-/* ---- OBJETOS ---- */
+/* CREAR OBJETO */
 function crearObjeto(data) {
   const img = document.createElement("img");
   img.src = data.src;
   img.className = "objeto";
   img.draggable = true;
   img.dataset.categoria = data.categoria;
-  img.alt = data.alt;
 
   img.addEventListener("dragstart", e => {
     e.dataTransfer.setData("categoria", img.dataset.categoria);
@@ -36,15 +40,17 @@ function crearObjeto(data) {
   return img;
 }
 
-function cargarObjetoAleatorio() {
-  contenedorObjetos.innerHTML = "";
+/* CARGAR OBJETO ALEATORIO */
+function cargarObjeto() {
+  contenedor.innerHTML = "";
   const random = Math.floor(Math.random() * objetosData.length);
   objetoActual = crearObjeto(objetosData[random]);
-  contenedorObjetos.appendChild(objetoActual);
+  contenedor.appendChild(objetoActual);
 }
 
-/* ---- CANECAS ---- */
+/* DROP LOGICO */
 canecas.forEach(caneca => {
+
   caneca.addEventListener("dragover", e => e.preventDefault());
 
   caneca.addEventListener("drop", e => {
@@ -56,20 +62,22 @@ canecas.forEach(caneca => {
 
     if (categoriaObjeto === categoriaCaneca) {
       puntaje += 8;
-      sonidoOk.play();
-      cargarObjetoAleatorio();
+      sndAcierto.play();
+      cargarObjeto();     // desaparece solo si acierta
     } else {
       puntaje -= 8;
-      sonidoError.play();
+      sndError.play();
     }
 
     puntajeEl.textContent = `Puntaje: ${puntaje}`;
   });
+
 });
 
-/* ---- TEMPORIZADOR ---- */
+/* TEMPORIZADOR */
 function iniciarTiempo() {
   const intervalo = setInterval(() => {
+
     tiempoRestante--;
 
     const min = String(Math.floor(tiempoRestante / 60)).padStart(2, "0");
@@ -78,14 +86,17 @@ function iniciarTiempo() {
 
     if (tiempoRestante <= 0) {
       clearInterval(intervalo);
-      contenedorObjetos.innerHTML = "";
-      alert(`Tiempo terminado\nPuntaje final: ${puntaje}`);
+      contenedor.innerHTML = "";
+      sndFin.play();
+      alert(`Tiempo finalizado\nPuntaje: ${puntaje}`);
     }
+
   }, 1000);
 }
 
-/* ---- INICIO ---- */
+/* INICIO */
 puntajeEl.textContent = "Puntaje: 0";
 tiempoEl.textContent = "⏱ 03:00";
-cargarObjetoAleatorio();
+
+cargarObjeto();
 iniciarTiempo();
