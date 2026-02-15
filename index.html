@@ -7,14 +7,27 @@
 </head>
 <body>
 
-  <div id="puntaje">Puntaje: 0</div>
+  <!-- TEMPORIZADOR -->
+  <div id="tiempo">⏱ 03:00</div>
 
-  <div id="escena">
-    <div id="objetos"></div>
+  <!-- PUNTAJE -->
+  <div id="puntaje">0</div>
 
-    <div id="blanca" class="caneca" data-categoria="reciclable"></div>
-    <div id="verde"  class="caneca" data-categoria="organico"></div>
-    <div id="negra"  class="caneca" data-categoria="no-aprovechable"></div>
+  <!-- LANZADOR -->
+  <div id="objetos"></div>
+
+  <!-- CANECAS -->
+  <div id="blanca" class="caneca" data-categoria="reciclable"></div>
+  <div id="verde"  class="caneca" data-categoria="organico"></div>
+  <div id="negra"  class="caneca" data-categoria="no-aprovechable"></div>
+
+  <!-- MODAL FINAL -->
+  <div id="modalFinal" class="modal oculto">
+    <div class="modalContenido">
+      <h2>Tiempo Finalizado</h2>
+      <p id="resultadoFinal"></p>
+      <button onclick="reiniciarJuego()">Reiniciar</button>
+    </div>
   </div>
 
   <script src="app.js"></script>
