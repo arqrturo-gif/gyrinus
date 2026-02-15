@@ -10,20 +10,33 @@ html, body {
 }
 
 body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  color: white;
+}
+
+/* ESCENA 1920x1080 */
+#escena {
+  position: relative;
+  width: 1920px;
+  height: 1080px;
   background-image: url("img/fondo.png");
-  background-size: 80%;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  color: white;
+  overflow: hidden;
 }
 
 /* HUD */
 #hud {
   position: absolute;
-  left: 20px;
+  left: 60px;
   top: 50%;
   transform: translateY(-50%);
   text-align: left;
+  z-index: 100;
 }
 
 #tiempo {
@@ -32,21 +45,14 @@ body {
 }
 
 #puntaje {
-  font-size: 1.2rem;
-}
-
-/* ESCENA */
-#escena {
-  position: relative;
-  width: 100%;
-  height: 100vh;
+  font-size: 1.4rem;
 }
 
 /* ZONA OBJETO */
 #objetos {
   position: absolute;
-  top: 20%;
-  left: 50%;
+  top: 220px;
+  left: 960px;
   transform: translateX(-50%);
   height: 160px;
   display: flex;
@@ -62,14 +68,17 @@ body {
 /* ZONAS ACTIVAS */
 .caneca {
   position: absolute;
-  bottom: 10%;
-  width: 150px;
-  height: 180px;
-  background: rgba(255,255,255,0.25);
-  border: 2px dashed rgba(255,255,255,0.5);
+  width: 180px;
+  height: 220px;
+  transform: translate(-50%, -50%);
+  border-radius: 12px;
+
+  /* visible para calibrar */
+  background: rgba(0,255,0,0.15);
+  border: 2px solid rgba(0,255,0,0.6);
 }
 
-#blanca { left: 20%; }
-#verde  { left: 45%; }
-#negra  { left: 70%; }
-
+/* POSICIONES AJUSTADAS */
+#blanca { top: 700px; left: 860px; }
+#verde  { top: 700px; left: 1060px; }
+#negra  { top: 700px; left: 1260px; }
