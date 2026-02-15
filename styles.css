@@ -75,9 +75,9 @@ body{
 }
 
 /* Solo posición horizontal */
-#blanca{ left:38%; }
+#blanca{ left:36%; }
 #verde{  left:46%; }
-#negra{  left:54%; }
+#negra{  left:58%; }
 
 /* MODAL */
 .modal{
@@ -107,3 +107,4 @@ body{
 .oculto{
   display:none;
 }
+
