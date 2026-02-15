@@ -11,19 +11,16 @@ html, body {
 
 body {
   background: #000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   color: white;
 }
 
-/* ESCENA AJUSTADA A ALTURA */
+/* ESCENA */
 #escena {
   position: relative;
-  height: 100vh;            /* ocupa toda la altura real */
-  aspect-ratio: 16 / 9;     /* mantiene proporción 1920x1080 */
+  width: 100%;
+  height: 100vh;
   background-image: url("img/fondo.png");
-  background-size: auto 100%;  /* escala por altura */
+  background-size: contain;     /* ajusta completo sin deformar */
   background-position: center;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -73,4 +70,12 @@ body {
   transform: translate(-50%, -50%);
   border-radius: 12px;
 
-  /* visible para cali*
+  /* visible para calibrar */
+  background: rgba(0,255,0,0.15);
+  border: 2px solid rgba(0,255,0,0.6);
+}
+
+/* POSICIONES */
+#blanca { top: 70%; left: 35%; }
+#verde  { top: 70%; left: 50%; }
+#negra  { top: 70%; left: 65%; }
