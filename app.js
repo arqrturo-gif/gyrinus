@@ -18,7 +18,6 @@ const tiempoEl = document.getElementById("tiempo");
 const modal = document.getElementById("modalFinal");
 const resultadoFinal = document.getElementById("resultadoFinal");
 
-/* CREAR OBJETO */
 function crearObjeto(data) {
   const img = document.createElement("img");
   img.src = data.src;
@@ -38,7 +37,6 @@ function crearObjeto(data) {
   return img;
 }
 
-/* CARGAR OBJETO */
 function cargarObjeto() {
   contenedor.innerHTML = "";
   const random = Math.floor(Math.random() * objetosData.length);
@@ -46,7 +44,6 @@ function cargarObjeto() {
   contenedor.appendChild(objetoActual);
 }
 
-/* DROP */
 canecas.forEach(caneca => {
 
   caneca.addEventListener("dragover", e => e.preventDefault());
@@ -70,7 +67,6 @@ canecas.forEach(caneca => {
 
 });
 
-/* TEMPORIZADOR */
 function iniciarTiempo() {
   intervalo = setInterval(() => {
 
@@ -88,14 +84,12 @@ function iniciarTiempo() {
   }, 1000);
 }
 
-/* FINALIZAR */
 function finalizarJuego() {
   contenedor.innerHTML = "";
   resultadoFinal.textContent = `Puntaje final: ${puntaje}`;
   modal.classList.remove("oculto");
 }
 
-/* REINICIAR */
 function reiniciarJuego() {
   puntaje = 0;
   tiempoRestante = 180;
@@ -106,7 +100,6 @@ function reiniciarJuego() {
   cargarObjeto();
 }
 
-/* INICIO */
 puntajeEl.textContent = 0;
 tiempoEl.textContent = "⏱ 03:00";
 cargarObjeto();
