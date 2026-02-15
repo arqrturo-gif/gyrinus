@@ -23,7 +23,7 @@ body {
   width: 1920px;
   height: 1080px;
   background-image: url("img/fondo.png");
-  background-size: cover;
+  background-size: auto 100%;
   background-position: center;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -82,3 +82,4 @@ body {
 #blanca { top: 700px; left: 860px; }
 #verde  { top: 700px; left: 1060px; }
 #negra  { top: 700px; left: 1260px; }
+
