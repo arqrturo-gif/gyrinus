@@ -10,20 +10,20 @@ html, body {
 }
 
 body {
+  background: #000;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #000;
   color: white;
 }
 
-/* ESCENA 1920x1080 */
+/* ESCENA AJUSTADA A ALTURA */
 #escena {
   position: relative;
-  width: 1920px;
-  height: 920px;
+  height: 100vh;            /* ocupa toda la altura real */
+  aspect-ratio: 16 / 9;     /* mantiene proporción 1920x1080 */
   background-image: url("img/fondo.png");
-  background-size: auto 100%;
+  background-size: auto 100%;  /* escala por altura */
   background-position: center;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -35,8 +35,8 @@ body {
   left: 60px;
   top: 50%;
   transform: translateY(-50%);
-  text-align: left;
   z-index: 100;
+  text-align: left;
 }
 
 #tiempo {
@@ -51,8 +51,8 @@ body {
 /* ZONA OBJETO */
 #objetos {
   position: absolute;
-  top: 220px;
-  left: 960px;
+  top: 20%;
+  left: 50%;
   transform: translateX(-50%);
   height: 160px;
   display: flex;
@@ -73,14 +73,4 @@ body {
   transform: translate(-50%, -50%);
   border-radius: 12px;
 
-  /* visible para calibrar */
-  background: rgba(0,255,0,0.15);
-  border: 2px solid rgba(0,255,0,0.6);
-}
-
-/* POSICIONES AJUSTADAS */
-#blanca { top: 700px; left: 860px; }
-#verde  { top: 700px; left: 1060px; }
-#negra  { top: 700px; left: 1260px; }
-
-
+  /* visible para cali*
