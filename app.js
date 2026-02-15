@@ -1,25 +1,22 @@
 let puntaje = 0;
 let tiempoRestante = 180;
 let objetoActual = null;
+let intervalo = null;
+let juegoIniciado = false;
 
 const objetosData = [
   { src: "img/7up.jpg", categoria: "reciclable" },
   { src: "img/btl.png", categoria: "reciclable" },
-  { src: "img/btlp.jpg", categoria: "reciclable" },
-  { src: "img/btlpet.jpg", categoria: "reciclable" },
-  { src: "img/btlv.jpg", categoria: "reciclable" },
   { src: "img/cp.png", categoria: "organico" },
-  { src: "img/envbbm.jpg", categoria: "reciclable" },
-  { src: "img/envg.jpg", categoria: "reciclable" },
-  { src: "img/envgl.jpg", categoria: "reciclable" },
-  { src: "img/jeringa.png", categoria: "no-aprovechable" },
-  { src: "img/ph.png", categoria: "no-aprovechable" }
+  { src: "img/jeringa.png", categoria: "no-aprovechable" }
 ];
 
 const contenedor = document.getElementById("objetos");
 const canecas = document.querySelectorAll(".caneca");
 const puntajeEl = document.getElementById("puntaje");
 const tiempoEl = document.getElementById("tiempo");
+const modal = document.getElementById("modalFinal");
+const resultadoFinal = document.getElementById("resultadoFinal");
 
 /* CREAR OBJETO */
 function crearObjeto(data) {
@@ -31,6 +28,11 @@ function crearObjeto(data) {
 
   img.addEventListener("dragstart", e => {
     e.dataTransfer.setData("categoria", img.dataset.categoria);
+
+    if (!juegoIniciado) {
+      iniciarTiempo();
+      juegoIniciado = true;
+    }
   });
 
   return img;
@@ -51,7 +53,7 @@ canecas.forEach(caneca => {
 
   caneca.addEventListener("drop", e => {
     e.preventDefault();
-    if (!objetoActual) return;
+    if (!objetoActual || tiempoRestante <= 0) return;
 
     const categoriaObjeto = e.dataTransfer.getData("categoria");
     const categoriaCaneca = caneca.dataset.categoria;
@@ -63,14 +65,14 @@ canecas.forEach(caneca => {
       puntaje -= 8;
     }
 
-    puntajeEl.textContent = `Puntaje: ${puntaje}`;
+    puntajeEl.textContent = puntaje;
   });
 
 });
 
 /* TEMPORIZADOR */
 function iniciarTiempo() {
-  const intervalo = setInterval(() => {
+  intervalo = setInterval(() => {
 
     tiempoRestante--;
 
@@ -80,16 +82,31 @@ function iniciarTiempo() {
 
     if (tiempoRestante <= 0) {
       clearInterval(intervalo);
-      contenedor.innerHTML = "";
-      alert(`Tiempo finalizado\nPuntaje: ${puntaje}`);
+      finalizarJuego();
     }
 
   }, 1000);
 }
 
-/* INICIO */
-puntajeEl.textContent = "Puntaje: 0";
-tiempoEl.textContent = "⏱ 03:00";
+/* FINALIZAR */
+function finalizarJuego() {
+  contenedor.innerHTML = "";
+  resultadoFinal.textContent = `Puntaje final: ${puntaje}`;
+  modal.classList.remove("oculto");
+}
 
+/* REINICIAR */
+function reiniciarJuego() {
+  puntaje = 0;
+  tiempoRestante = 180;
+  juegoIniciado = false;
+  puntajeEl.textContent = puntaje;
+  tiempoEl.textContent = "⏱ 03:00";
+  modal.classList.add("oculto");
+  cargarObjeto();
+}
+
+/* INICIO */
+puntajeEl.textContent = 0;
+tiempoEl.textContent = "⏱ 03:00";
 cargarObjeto();
-iniciarTiempo();
