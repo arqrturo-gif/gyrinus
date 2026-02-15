@@ -64,8 +64,8 @@ body {
 
 /* CANECAS (MISMA POSICIÓN QUE ECORANA) */
 .caneca {
-  position: absolute;
-  top: 35%;
+  position: relative;
+  top:40%;
   width: 70px;
   height: 70px;
   border-radius: 8px;
