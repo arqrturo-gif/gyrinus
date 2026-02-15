@@ -18,42 +18,51 @@ body {
   color: white;
 }
 
-/* CONTENEDOR LÓGICO */
-#escena {
-  position: relative;
-  width: 100%;
-  height: 100%;
+/* TEMPORIZADOR */
+#tiempo {
+  position: absolute;
+  left: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 4rem;
+  font-weight: bold;
+  z-index: 100;
 }
 
 /* PUNTAJE */
 #puntaje {
   position: absolute;
-  top: 20px;
-  right: 60px;
-  background: #2e7d32;
-  padding: 10px 20px;
-  border-radius: 25px;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 4rem;
   font-weight: bold;
   z-index: 100;
 }
 
-/* OBJETOS */
+/* LANZADOR */
 #objetos {
   position: absolute;
-  bottom: 40px;
+  bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 20px;
+  justify-content: center;
+  align-items: center;
   z-index: 50;
 }
 
 .objeto {
   width: 90px;
   cursor: grab;
+  transition: transform 0.1s;
 }
 
-/* CANECAS */
+.objeto:hover {
+  transform: scale(1.1);
+}
+
+/* CANECAS (MISMA POSICIÓN QUE ECORANA) */
 .caneca {
   position: absolute;
   top: 68%;
@@ -62,10 +71,37 @@ body {
   border-radius: 8px;
   background: rgba(0,255,0,0.2);
   border: 2px solid #00ff00;
-  z-index: 40;
 }
 
-/* POSICIONES */
 #blanca { left: 38%; }
 #verde  { left: 46%; }
 #negra  { left: 54%; }
+
+/* MODAL */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContenido {
+  background: white;
+  color: black;
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.modalContenido button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.oculto {
+  display: none;
+}
