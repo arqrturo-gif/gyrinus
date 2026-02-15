@@ -32,8 +32,8 @@ body{
 /* PUNTAJE */
 #puntaje{
   position:absolute;
-  right:40px;
-  top:50%;
+  right:60px;
+  top:70%;
   transform:translateY(-50%);
   font-size:4rem;
   font-weight:bold;
@@ -107,4 +107,5 @@ body{
 .oculto{
   display:none;
 }
+
 
