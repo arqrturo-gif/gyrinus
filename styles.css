@@ -21,7 +21,7 @@ body{
 /* TEMPORIZADOR */
 #tiempo{
   position:absolute;
-  left:80px;
+  left:240px;
   top:35%;
   transform:translateY(-50%);
   font-size:4rem;
@@ -107,6 +107,7 @@ body{
 .oculto{
   display:none;
 }
+
 
 
 
