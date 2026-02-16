@@ -33,7 +33,7 @@ body{
 #puntaje{
   position:absolute;
   right:360px;
-  top:60%;
+  top:68%;
   transform:translateY(-50%);
   font-size:4rem;
   font-weight:bold;
@@ -107,6 +107,7 @@ body{
 .oculto{
   display:none;
 }
+
 
 
 
