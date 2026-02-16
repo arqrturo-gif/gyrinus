@@ -21,8 +21,8 @@ body{
 /* TEMPORIZADOR */
 #tiempo{
   position:absolute;
-  left:40px;
-  top:50%;
+  left:80px;
+  top:35%;
   transform:translateY(-50%);
   font-size:4rem;
   font-weight:bold;
@@ -33,7 +33,7 @@ body{
 #puntaje{
   position:absolute;
   right:360px;
-  top:70%;
+  top:60%;
   transform:translateY(-50%);
   font-size:4rem;
   font-weight:bold;
@@ -75,9 +75,9 @@ body{
 }
 
 /* Solo posición horizontal */
-#blanca{ left:36%; }
-#verde{  left:46%; }
-#negra{  left:58%; }
+#blanca{ left:40%; }
+#verde{  left:48%; }
+#negra{  left:56%; }
 
 /* MODAL */
 .modal{
@@ -107,6 +107,7 @@ body{
 .oculto{
   display:none;
 }
+
 
 
 
