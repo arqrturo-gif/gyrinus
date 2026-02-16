@@ -65,7 +65,7 @@ body{
 /* CANECAS ALINEADAS CORRECTAMENTE */
 .caneca{
   position:absolute;     /* clave para alineación global */
-  top:35%;               /* misma altura para las tres */
+  top:25%;               /* misma altura para las tres */
   width:70px;
   height:70px;
   border-radius:8px;
@@ -107,6 +107,7 @@ body{
 .oculto{
   display:none;
 }
+
 
 
 
